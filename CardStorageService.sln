@@ -10,7 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ef.readme.txt = ef.readme.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardStorageService.Data", "CardStorageService.Data\CardStorageService.Data.csproj", "{B612802E-541B-43B3-9963-BC333E82A679}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardStorageService.Data", "CardStorageService.Data\CardStorageService.Data.csproj", "{B612802E-541B-43B3-9963-BC333E82A679}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtSample", "JwtSample\JwtSample.csproj", "{1E5C60EA-ABD2-43D4-8874-3568D2F4EDEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{B612802E-541B-43B3-9963-BC333E82A679}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B612802E-541B-43B3-9963-BC333E82A679}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B612802E-541B-43B3-9963-BC333E82A679}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E5C60EA-ABD2-43D4-8874-3568D2F4EDEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E5C60EA-ABD2-43D4-8874-3568D2F4EDEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E5C60EA-ABD2-43D4-8874-3568D2F4EDEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E5C60EA-ABD2-43D4-8874-3568D2F4EDEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

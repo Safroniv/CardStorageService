@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CardStorageService.Data.Migrations
 {
     [DbContext(typeof(CardStorageServiceDbContext))]
-    [Migration("20230205155038_InitialMigration")]
+    [Migration("20230213185900_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -59,11 +59,11 @@ namespace CardStorageService.Data.Migrations
 
             modelBuilder.Entity("CardStorageService.Data.Client", b =>
                 {
-                    b.Property<int>("ClentId")
+                    b.Property<int>("ClientId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClentId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClientId"));
 
                     b.Property<string>("FirstName")
                         .HasMaxLength(255)
@@ -77,7 +77,7 @@ namespace CardStorageService.Data.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.HasKey("ClentId");
+                    b.HasKey("ClientId");
 
                     b.ToTable("Clients");
                 });

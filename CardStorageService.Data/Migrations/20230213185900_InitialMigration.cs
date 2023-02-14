@@ -15,7 +15,7 @@ namespace CardStorageService.Data.Migrations
                 name: "Clients",
                 columns: table => new
                 {
-                    ClentId = table.Column<int>(type: "int", nullable: false)
+                    ClientId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SurName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     FirstName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
@@ -23,7 +23,7 @@ namespace CardStorageService.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Clients", x => x.ClentId);
+                    table.PrimaryKey("PK_Clients", x => x.ClientId);
                 });
 
             migrationBuilder.CreateTable(
@@ -44,7 +44,7 @@ namespace CardStorageService.Data.Migrations
                         name: "FK_Cards_Clients_ClientId",
                         column: x => x.ClientId,
                         principalTable: "Clients",
-                        principalColumn: "ClentId",
+                        principalColumn: "ClientId",
                         onDelete: ReferentialAction.Cascade);
                 });
 

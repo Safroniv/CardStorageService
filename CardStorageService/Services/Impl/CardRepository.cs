@@ -27,7 +27,8 @@ namespace CardStorageService.Services.Impl
         public string Create(Card data)
         {
             var client = _context.Clients.FirstOrDefault(client => client.ClientId == data.ClientId);
-            if ( client == null ) { throw new Exception("Client not found."); }
+            if ( client == null ) 
+                 throw new Exception("Client not found.");
 
             _context.Cards.Add(data);
 
@@ -52,9 +53,9 @@ namespace CardStorageService.Services.Impl
             using (SqlConnection sqlConnection = new SqlConnection(_databaseOptions.Value.ConnectionString))
             {
                 sqlConnection.Open();
-                using (var sqlCommand = new SqlCommand(String.Format("select * from cards where ClientId = {0}", id), sqlConnection))
+                using (var sqlComand = new SqlCommand(String.Format("select * from cards where ClientId = {0}", id), sqlConnection))
                 {
-                    var reader = sqlCommand.ExecuteReader();
+                    var reader = sqlComand.ExecuteReader();
                     while (reader.Read())
                     {
                         cards.Add(new Card

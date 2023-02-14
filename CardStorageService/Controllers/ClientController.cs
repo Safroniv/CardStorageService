@@ -36,7 +36,7 @@ namespace CardStorageService.Controllers
         {
             try
             {
-                var clienId = _clientRepositoryService.Create(new Client
+                var clientId = _clientRepositoryService.Create(new Client
                 {
                     FirstName= request.FirstName,
                     SurName= request.SurName,
@@ -44,7 +44,7 @@ namespace CardStorageService.Controllers
                 });
                 return Ok(new CreateClientResponse
                 {
-                    ClienId = clienId
+                    ClientId = clientId
                 });
             }
             catch (Exception e)

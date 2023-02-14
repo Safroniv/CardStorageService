@@ -39,6 +39,7 @@ public SampleServiceDbContext(DbContextOptions options) : base(options)
     
     Add-Migration InitialMigration
 
+    Add-Migration AccountsAdded
 
 6. Для обновления БД (поcле добавления новой миграции) мы можем воcпользоватьcя командой
    

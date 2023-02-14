@@ -37,6 +37,6 @@ namespace CardStorageService.Data
         public string Secondname { get; set; }
 
         [InverseProperty(nameof(AccountSession.Account))]
-        public virtual ICollection<AccountSession> Sessions { get; set; } = new HashSet<>(AccountSession);
+        public virtual ICollection<AccountSession> Sessions { get; set; } = new HashSet<AccountSession>();
     }
 }

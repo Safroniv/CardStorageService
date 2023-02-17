@@ -1,4 +1,4 @@
-﻿namespace CardStorageService.Models.Requesrs
+﻿namespace CardStorageService.Models.Requests
 {
     public class CreateClientResponse : IOperationResult
     {

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace CardStorageService.Models.Requesrs
+namespace CardStorageService.Models.Requests
 {
     public class CreateCardRequest
     {

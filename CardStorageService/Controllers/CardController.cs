@@ -1,6 +1,6 @@
 ﻿using CardStorageService.Data;
 using CardStorageService.Models;
-using CardStorageService.Models.Requesrs;
+using CardStorageService.Models.Requests;
 using CardStorageService.Services;
 using Microsoft.AspNetCore.Mvc;
 

@@ -17,7 +17,7 @@ namespace CardStorageService.Services.Impl
 
         #endregion
 
-        private const string SecretKey = "kYp4s6v9/B&E(nw3n2@";
+        public const string SecretKey = "kYp4s6v9/B&E(nw3n2@";
 
         private readonly Dictionary<string, SessionInfo> _session = new Dictionary<string, SessionInfo>();
 

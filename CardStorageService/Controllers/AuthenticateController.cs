@@ -2,6 +2,7 @@
 using CardStorageService.Models.Requests;
 using CardStorageService.Services;
 using CardStorageService.Services.Impl;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
@@ -9,6 +10,7 @@ using System.Net.Http.Headers;
 
 namespace CardStorageService.Controllers
 {
+    [Authorize]
     [Route("api/auth]")]
     [ApiController]
     public class AuthenticateController : ControllerBase

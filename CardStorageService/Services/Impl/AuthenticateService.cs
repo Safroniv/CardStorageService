@@ -61,7 +61,7 @@ namespace CardStorageService.Services.Impl
 
             SessionInfo sessionInfo = GetSessionInfo(account,session);
 
-            //if (!_session.ContainsKey(sessionInfo.SessionToken))
+            //if (!_session.ContainsK ey(sessionInfo.SessionToken))
             //    _session.Add(sessionInfo.SessionToken, sessionInfo);
             //else
             //    _session[sessionInfo.SessionToken] = sessionInfo;

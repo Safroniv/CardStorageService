@@ -1,4 +1,5 @@
-﻿using CardStorageService.Models.Requests;
+﻿using CardStorageService.Models;
+using CardStorageService.Models.Requests;
 using CardStorageService.Services;
 using CardStorageService.Services.Impl;
 using Microsoft.AspNetCore.Http;
@@ -39,15 +40,28 @@ namespace CardStorageService.Controllers
 
         }
 
-        //[HttpGet("session")]
-        //public IActionResult GetSessionInfo ()
-        //{
-        //    //Authorization: Bearer XXXXXXXXXXXXXXXXXX
+        [HttpGet("session")]
+        public IActionResult GetSessionInfo()
+        {
+            //Authorization: Bearer XXXXXXXXXXXXXXXXXX
 
-        //    var authorization = Request.Headers[HeaderNames.Authorization];
+            var authorization = Request.Headers[HeaderNames.Authorization];
 
-        //    AuthenticationHeaderValue
-        //}
+            if (AuthenticationHeaderValue.TryParse(authorization, out var headerValue))
+            {
+                var scheme = headerValue.Scheme; //"Bearer"
+                var sessionToken = headerValue.Parameter; // Token
+                if (string.IsNullOrEmpty(sessionToken))
+                    return Unauthorized();
+
+                SessionInfo sessionInfo = _authenticateService.GetSessionInfo(sessionToken);
+                if (sessionInfo == null)
+                    return Unauthorized();
+
+                return Ok(sessionInfo);
+            } 
+            return Unauthorized();
+        }
 
 
     }

@@ -50,22 +50,22 @@ namespace CardStorageService.Services.Impl
             {
                 AccountId = account.AccountId,
                 SessionToken = CreateSessionToken(account),
-                TimeCreate= DateTime.UtcNow,
+                TimeCreate = DateTime.UtcNow,
                 TimeLastRequest = DateTime.UtcNow,
-                IsClosed= false,
+                IsClosed = false,
             };
 
             context.Accounts.Add(account);
 
             context.SaveChanges();
 
-            SessionInfo sessionInfo = GetSessionInfo(account,session);
+            SessionInfo sessionInfo = GetSessionInfo(account, session);
 
             //if (!_session.ContainsK ey(sessionInfo.SessionToken))
             //    _session.Add(sessionInfo.SessionToken, sessionInfo);
             //else
             //    _session[sessionInfo.SessionToken] = sessionInfo;
-            lock(_session)
+            lock (_session)
             {
                 _session[sessionInfo.SessionToken] = sessionInfo;
             }
@@ -80,10 +80,10 @@ namespace CardStorageService.Services.Impl
         public SessionInfo GetSessionInfo(string sessionToken)
         {
             SessionInfo sessionInfo;
-            
-            lock(_session)
-            { 
-                _session.TryGetValue(sessionToken, out sessionInfo); 
+
+            lock (_session)
+            {
+                _session.TryGetValue(sessionToken, out sessionInfo);
             }
 
             if (sessionInfo == null)
@@ -99,11 +99,11 @@ namespace CardStorageService.Services.Impl
 
                 Account account = context.Accounts.FirstOrDefault(item => item.AccountId == session.AccountId);
 
-                sessionInfo = GetSessionInfo(account,session);
+                sessionInfo = GetSessionInfo(account, session);
 
                 if (sessionInfo != null)
                 {
-                    lock(_session)
+                    lock (_session)
                     {
                         _session[sessionToken] = sessionInfo;
                     }
@@ -116,7 +116,7 @@ namespace CardStorageService.Services.Impl
         }
 
 
-        private SessionInfo GetSessionInfo (Account account, AccountSession accountSession)
+        private SessionInfo GetSessionInfo(Account account, AccountSession accountSession)
         {
             return new SessionInfo
             {
@@ -128,8 +128,8 @@ namespace CardStorageService.Services.Impl
                     Email = account.Email,
                     FirstName = account.Firstname,
                     LastName = account.Lastname,
-                    SecondName= account.Secondname,
-                    Locked= account.Locked,
+                    SecondName = account.Secondname,
+                    Locked = account.Locked,
                 }
             };
         }
@@ -155,7 +155,7 @@ namespace CardStorageService.Services.Impl
         }
 
 
-        private Account FindAccountByLogin(CardStorageServiceDbContext context, string login) 
+        private Account FindAccountByLogin(CardStorageServiceDbContext context, string login)
         {
             return context.Accounts.FirstOrDefault(account => account.Email == login);
         }

@@ -11,7 +11,7 @@ using System.Net.Http.Headers;
 namespace CardStorageService.Controllers
 {
     [Authorize]
-    [Route("api/auth]")]
+    [Route("api/auth")]
     [ApiController]
     public class AuthenticateController : ControllerBase
     {
@@ -23,23 +23,23 @@ namespace CardStorageService.Controllers
 
         #region Constructor
 
-        public AuthenticateController (IAuthenticateService authenticateService)
+        public AuthenticateController(IAuthenticateService authenticateService)
         {
             _authenticateService = authenticateService;
         }
 
         #endregion
-
+        [AllowAnonymous]
         [HttpPost("login")]
         public IActionResult Login([FromBody] AuthenticationRequest authenticationRequest)
         {
+
             AuthenticationResponse authenticationResponse = _authenticateService.Login(authenticationRequest);
             if (authenticationResponse.Status == Models.AuthenticationStatus.Success)
             {
                 Response.Headers.Add("X-Session-Token", authenticationResponse.SessionInfo.SessionToken);
             }
             return Ok(authenticationResponse);
-
         }
 
         [HttpGet("session")]
@@ -61,7 +61,7 @@ namespace CardStorageService.Controllers
                     return Unauthorized();
 
                 return Ok(sessionInfo);
-            } 
+            }
             return Unauthorized();
         }
 

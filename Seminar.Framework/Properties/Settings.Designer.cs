@@ -40,5 +40,29 @@ namespace Seminar.Framework.Properties {
                 return ((string)(this["ApplicationNameDebug"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Fio {
+            get {
+                return ((string)(this["Fio"]));
+            }
+            set {
+                this["Fio"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Age {
+            get {
+                return ((int)(this["Age"]));
+            }
+            set {
+                this["Age"] = value;
+            }
+        }
     }
 }

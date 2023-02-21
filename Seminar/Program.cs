@@ -4,7 +4,36 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var connectionString1 = new ConnectionString
+            {
+                DatabaseName = "F+Database1",
+                Host = "localhost",
+                Password = "12345",
+                UserName = "User1"
+
+            };
+            var connectionString2 = new ConnectionString
+            {
+                DatabaseName = "F+Database1",
+                Host = "localhost",
+                Password = "54321",
+                UserName = "User2"
+
+            };
+
+            List<ConnectionString> connections = new List<ConnectionString>();
+            connections.Add(connectionString1);
+            connections.Add(connectionString2);
+
+            CacheProvider cacheProvider = new CacheProvider();
+            cacheProvider.CacheConnection(connections);
+
+            connections = cacheProvider.GetConnectionsFromCache();
+
+            foreach(var connection in connections)
+                Console.WriteLine(connection);
+
+            Console.ReadKey(true);
         }
     }
 }

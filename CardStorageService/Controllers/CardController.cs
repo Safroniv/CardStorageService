@@ -39,14 +39,14 @@ namespace CardStorageService.Controllers
         {
             try
             {
-                var cardId = _cardRepositoryService.Create(new Card
-                {
-                    ClientId = request.ClientId,
-                    CardNo = request.CardNo,
-                    ExpDate = request.ExpDate,
-                    CVV2 = request.CVV2
-                });
-
+                //var cardId = _cardRepositoryService.Create(new Card
+                //{
+                //    ClientId = request.ClientId,
+                //    CardNo = request.CardNo,
+                //    ExpDate = request.ExpDate,
+                //    CVV2 = request.CVV2
+                //});
+                var cardId = _cardRepositoryService.Create(_mapper.Map<Card>(request));
                 return Ok(new CreateCardResponse
                 {
                         CardId = cardId.ToString(),

@@ -29,8 +29,7 @@ namespace CardStorageService
 
 
             #endregion
-
-            #region ConfigureMapper
+             #region ConfigureMapper
 
             var mapperConfiguration = MapperConfiguration(mp => mp.AddProfile(new MappingsProfile()));
             var mapper = mapperConfiguration.CreateMapper();

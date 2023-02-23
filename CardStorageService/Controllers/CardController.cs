@@ -1,4 +1,5 @@
-﻿using CardStorageService.Data;
+﻿using AutoMapper;
+using CardStorageService.Data;
 using CardStorageService.Models;
 using CardStorageService.Models.Requests;
 using CardStorageService.Services;
@@ -16,16 +17,19 @@ namespace CardStorageService.Controllers
 
         private readonly ILogger<CardController> _logger;
         private readonly ICardRepositoryService _cardRepositoryService;
+        private readonly IMapper _mapper;
 
         #endregion
 
         #region Constructor
 
         public CardController(ILogger<CardController> logger,
-            ICardRepositoryService cardRepositoryService)
+            ICardRepositoryService cardRepositoryService,
+            IMapper mapper)
         {
             _logger = logger;
             _cardRepositoryService = cardRepositoryService;
+            _mapper = mapper;
         }
 
         #endregion
@@ -37,14 +41,15 @@ namespace CardStorageService.Controllers
             {
                 var cardId = _cardRepositoryService.Create(new Card
                 {
-                    ClientId =request.ClientId,
+                    ClientId = request.ClientId,
                     CardNo = request.CardNo,
                     ExpDate = request.ExpDate,
                     CVV2 = request.CVV2
                 });
+
                 return Ok(new CreateCardResponse
                 {
-                        CardId = cardId.ToString()
+                        CardId = cardId.ToString(),
                 });
             }
             catch (Exception e) 

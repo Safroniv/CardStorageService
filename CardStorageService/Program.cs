@@ -1,14 +1,19 @@
 using CardStorageService.Data;
+using CardStorageService.Mapping;
 using CardStorageService.Models;
+using CardStorageService.Models.Requests;
+using CardStorageService.Models.Validators;
 using CardStorageService.Services;
 using CardStorageService.Services.Impl;
+using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.EntityFrameworkCore;
-using NLog.Web;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using System.Text;
 using Microsoft.OpenApi.Models;
+using NLog.Web;
+using System.Text;
+
 
 namespace CardStorageService
 {
@@ -17,6 +22,21 @@ namespace CardStorageService
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            #region Configure Fluent Validator
+
+            builder.Services.AddScoped<IValidator<AuthenticationRequest>, AuthenticationRequestValidator>();
+
+
+            #endregion
+
+            #region ConfigureMapper
+
+            var mapperConfiguration = MapperConfiguration(mp => mp.AddProfile(new MappingsProfile()));
+            var mapper = mapperConfiguration.CreateMapper();
+            builder.Services.AddSingleton(mapper);
+
+            #endregion
 
             #region Configure Options Services
 
@@ -149,6 +169,11 @@ namespace CardStorageService
             app.MapControllers();
 
             app.Run();
+        }
+
+        private static object MapperConfiguration(Func<object, object> value)
+        {
+            throw new NotImplementedException();
         }
     }
 }

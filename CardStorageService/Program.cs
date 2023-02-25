@@ -31,9 +31,9 @@ namespace CardStorageService
             #endregion
              #region ConfigureMapper
 
-            var mapperConfiguration = MapperConfiguration(mp => mp.AddProfile(new MappingsProfile()));
-            var mapper = mapperConfiguration.CreateMapper();
-            builder.Services.AddSingleton(mapper);
+            //var mapperConfiguration = MapperConfiguration(mp => mp.AddProfile(new MappingsProfile()));
+            //var mapper = mapperConfiguration.CreateMapper();
+            //builder.Services.AddSingleton(mapper);
 
             #endregion
 

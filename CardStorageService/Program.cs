@@ -186,9 +186,10 @@ namespace CardStorageService
                 builder =>
                 {
                     builder.UseHttpLogging();
-                });
+                }
+                );
 
-            app.MapControllers();
+            //app.UseHttpLogging();
 
             app.UseEndpoints(endpoints =>
             {
@@ -196,6 +197,7 @@ namespace CardStorageService
                 endpoints.MapGrpcService<CardService>();
             });
 
+            app.MapControllers();
             app.Run();
         }
 

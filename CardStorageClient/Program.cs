@@ -40,7 +40,7 @@ namespace CardStorageClient
                 Console.WriteLine($"{card.CardNo}; {card.Name}; {card.CVV2}; {card.ExpDate}");
             }
             
-            Console.ReadLine();
+            Console.ReadKey(true);
         }
     }
 }

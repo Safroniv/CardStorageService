@@ -9,17 +9,21 @@ namespace CardStorageService.Services.Impl
         #region Services
 
         private readonly IClientRepositoryService _clientRepositoryService;
+        private readonly ILogger<ClientRepository> _logger;
 
         #endregion
 
 
-        public ClientService(IClientRepositoryService clientRepositoryService) 
+        public ClientService(ILogger<ClientRepository> logger, IClientRepositoryService clientRepositoryService) 
         {
             _clientRepositoryService = clientRepositoryService;
+            _logger = logger;
         }
 
         public override Task<CreateClientResponce> Create(CreateClientRequest request, ServerCallContext context)
         {
+            try
+            { 
             var cliendId = _clientRepositoryService.Create(new Data.Client
             {
                 FirstName = request.FirstName,
@@ -27,14 +31,28 @@ namespace CardStorageService.Services.Impl
                 Patronumic = request.Patronymic
             });
 
-            var responce = new CreateClientResponce
+            var responce2 = new CreateClientResponce
             {
-                ClientId = cliendId
+                ClientId = cliendId,
+                ErrorCode = 0,
+                ErrorMessage = String.Empty,
+
             };
 
-
-
-            return Task.FromResult(responce);
+            return Task.FromResult(responce2);
+        }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Create client error.");
+                var responce2 = new CreateClientResponce
+                {
+                    ClientId = -1,
+                    ErrorCode = 912,
+                    ErrorMessage = "Create client error.",
+                };
+                return Task.FromResult(responce2);
+            }
+            
         }
 
     }

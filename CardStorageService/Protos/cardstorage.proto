@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "CardStorageServiceProtos";
 
-//package CardStorageServiceProtos;
+package CardStorageServiceProtos;
 
 service ClientService{	
 rpc Create (CreateClientRequest) returns (CreateClientResponce);
@@ -20,6 +20,8 @@ message CreateClientRequest{
 
 message CreateClientResponce{
 	int32 ClientId = 1;
+	int32 ErrorCode = 2;
+	string ErrorMessage = 3;
 }
 
 message GetByClientIdRequest{

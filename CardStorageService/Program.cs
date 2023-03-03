@@ -31,7 +31,7 @@ namespace CardStorageService
                 options.Listen(IPAddress.Any, 5001, listenOptions =>
                 {
                     listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2;
-                    //listenOptions.UseHttps(@"C:\testcert.pfx", "12345");
+                    listenOptions.UseHttps(@"C:\devcert.pfx", "12345");
                 });
             });
 

@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "CardStorageService.Data": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:51863;http://localhost:51865"
+    }
+  }
+}

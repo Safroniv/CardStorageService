@@ -16,7 +16,7 @@ namespace CardStorageClient
 
             using var channel = GrpcChannel.ForAddress("http://localhost:5001");
 
-            ClientServiceClient clientService = new ClientServiceClient(channel);
+            ClientServiceClient clientService = new (channel);
 
             var createClientResponce = clientService.Create(new CardStorageServiceProtos.CreateClientRequest
             {
@@ -28,7 +28,7 @@ namespace CardStorageClient
 
             Console.WriteLine($"Client {createClientResponce.ClientId} created successfully.");
 
-            CardServiceClient cardService = new CardServiceClient(channel);
+            CardServiceClient cardService = new (channel);
 
             var getByClientIdResponce = cardService.GetByClientId(new CardStorageServiceProtos.GetByClientIdRequest
             {
